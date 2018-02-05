@@ -1,5 +1,7 @@
 # ALDS
-Algorithms and Data Structures
+Algorithms and Data Structures in Python3  
+[プログラミングコンテスト攻略のためのアルゴリズムとデータ構造(マイナビ出版)](https://www.amazon.co.jp/プログラミングコンテスト攻略のためのアルゴリズムとデータ構造-渡部-有隆/dp/4839952957)をPython3で  
+[AOJ](http://judge.u-aizu.ac.jp/onlinejudge/index.jsp)
 
 ## ソート
 - 計算量と安定性
@@ -103,4 +105,7 @@ pythonでの計算量は<https://qiita.com/Hironsan/items/68161ee16b1c9d7b25fb>
 二分ヒープは、木の各節点に割り当てられたキーが１つの配列の各要素に対応した完全二分木で表されたデータ構造。
 優先度付きキューが簡単に実装できる。
 pythonならheapqを使うといい。
+
+## 動的計画法
+小さい部分問題の解をメモリに記憶しておいて、大きい問題の解を計算するために有効利用する。
 
