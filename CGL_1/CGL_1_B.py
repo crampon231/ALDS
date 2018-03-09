@@ -12,7 +12,7 @@ class Vector2(collections.namedtuple("Vector2", ["x",  "y"])):
     def __sub__(self, other):
         return Vector2(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, scalar):  # cross product
+    def __mul__(self, scalar):  
         return Vector2(self.x * scalar, self.y * scalar)
 
     def __neg__(self):
