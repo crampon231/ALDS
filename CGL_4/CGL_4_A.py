@@ -109,15 +109,33 @@ def getCrossPointsCircle(c1, c2):
     return [c1.c + polar(c1.r, t + a), c1.c + polar(c1.r, t - a)]
 
 
+def contains(g, p):
+    n = len(g)
+    x = 0
+    for i in range(n):
+        a = g[i] - p
+        b = g[(i + 1) % n] - p
+        if a.cross(b) == 0 and a.dot(b) <= 0:
+            return 1
+        if a.y > b.y:
+            a, b = b, a
+        if a.y <= 0 and b.y > 0 and a.cross(b) > 0:
+            x += 1
+
+    if x % 2 == 1:
+        return 2
+    else:
+        return 0
+
+
 if __name__ == '__main__':
 
-    a, b, r = map(int, input().split())
-    c1 = Circle(Vector2(a, b), r)
-    a, b, r = map(int, input().split())
-    c2 = Circle(Vector2(a, b), r)
-
-    ans = getCrossPointsCircle(c1, c2)
-    ans = sorted(ans, key=lambda x: (x.x, x.y))
-
-    print("{:.8f} {:.8f} {:.8f} {:.8f}".format(
-        ans[0].x, ans[0].y, ans[1].x, ans[1].y))
+    n = int(input())
+    g = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        g.append(Vector2(a, b))
+    q = int(input())
+    for _ in range(q):
+        c, d = map(int, input().split())
+        print(contains(g, Vector2(c, d)))
