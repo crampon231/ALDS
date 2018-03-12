@@ -128,48 +128,14 @@ def contains(g, p):
         return 0
 
 
-def andrewScan(s):
-    u = []
-    l = []
-    s = sorted(s, key=lambda x: (x.x, x.y))
-    if len(s) < 3:
-        return s
-    u.append(s[0])
-    u.append(s[1])
-    l.append(s[-1])
-    l.append(s[-2])
-
-    for i in range(2, len(s)):
-        for n in range(len(u), 1, -1):
-            if ccw(u[n - 2], u[n - 1], s[i]) != 1:
-                break
-            else:
-                u.pop()
-        u.append(s[i])
-
-    for i in range(len(s) - 3, -1, -1):
-        for n in range(len(l), 1, -1):
-            if ccw(l[n - 2], l[n - 1], s[i]) != 1:
-                break
-            else:
-                l.pop()
-        l.append(s[i])
-
-    ans = l + u[1:-1]
-    ans.reverse()
-    return ans
-
-
 if __name__ == '__main__':
 
     n = int(input())
-    s = []
+    g = []
     for _ in range(n):
         a, b = map(int, input().split())
-        s.append(Vector2(a, b))
-    ans = andrewScan(s)
-    index = ans.index((min(ans, key=lambda x: x.y)))
-    print(len(ans))
-    for i in range(len(ans)):
-        p = ans[(index + i) % len(ans)]
-        print(p.x, p.y)
+        g.append(Vector2(a, b))
+    q = int(input())
+    for _ in range(q):
+        c, d = map(int, input().split())
+        print(contains(g, Vector2(c, d)))
